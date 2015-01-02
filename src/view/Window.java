@@ -36,6 +36,7 @@ public class Window extends JFrame implements ActionListener{
 		buttonPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		buttonPanel.add(sortButton, BorderLayout.CENTER);
 		
+		wrapperPanel.add(new ControlPanel(), BorderLayout.NORTH);
 		wrapperPanel.add(barPanel, BorderLayout.CENTER);
 		wrapperPanel.add(buttonPanel, BorderLayout.SOUTH);
 		
