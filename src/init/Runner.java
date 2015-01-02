@@ -1,11 +1,11 @@
 package init;
 
-import view.Window;
+import controller.Controller;
 
 public class Runner {
 
 	public static void main(String[] args) {
-		new Window();
+		new Controller();
 	}
 
 }

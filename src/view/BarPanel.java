@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 import javax.swing.JPanel;
@@ -15,7 +14,7 @@ public class BarPanel extends JPanel {
 
 	public BarPanel(int[] values) {
 		this.values = values;
-		System.out.println(Arrays.toString(values));
+//		System.out.println(Arrays.toString(values));
 	}
 
 	@Override
@@ -33,11 +32,11 @@ public class BarPanel extends JPanel {
 		for (int i = 0; i < values.length; i++) {
 			if (minValue > values[i]){
 				minValue = values[i];
-				System.out.println("New min value "+minValue);
+//				System.out.println("New min value "+minValue);
 			}
 			if (maxValue < values[i]){
 				maxValue = values[i];
-				System.out.println("New max value "+maxValue);
+//				System.out.println("New max value "+maxValue);
 			}
 		}
 
