@@ -4,6 +4,7 @@ import java.security.InvalidParameterException;
 
 import lib.ButtonType;
 import model.DataCreator;
+import model.Sorter;
 import view.BarPanel;
 import view.Window;
 
@@ -26,10 +27,9 @@ public class Controller {
 				switch (bt) {
 				case SORT:
 					// Trying to change existing data-set
-					int[] data = DataCreator.createDataArray(1, 10, 10);
-					BarPanel barPanel = new BarPanel(data);
-					window.setDataPanel(barPanel);
-					window.setButtonText("Changed");
+//					createNewDataset(1, 10, 10);
+					data = Sorter.bubbleSort(data);
+					sendNewDataset(data);
 					break;
 				default:
 					throw new InvalidParameterException("Wrong on button type "
@@ -38,6 +38,19 @@ public class Controller {
 			}
 		});
 
+	}
+	
+	private void createNewDataset(int min, int max, int n){
+		int[] data = DataCreator.createDataArray(min, max, n);
+		BarPanel barPanel = new BarPanel(data);
+		window.setDataPanel(barPanel);
+		window.setButtonText("Changed");
+	}
+	
+	private void sendNewDataset(int[] data){
+		BarPanel barPanel = new BarPanel(data);
+		window.setDataPanel(barPanel);
+		window.setButtonText("Sorted");
 	}
 
 }
