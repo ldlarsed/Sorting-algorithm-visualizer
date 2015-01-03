@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * A class whith methods that sort and return a whole array directly.
+ * Not suited for eventual animation or visualisation of sorting algoritms.
+ * @author luke
+ *
+ */
 public class Sorter {
 
 	public static int[] bubbleSort(int[] data) {

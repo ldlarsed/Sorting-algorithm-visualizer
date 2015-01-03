@@ -40,6 +40,8 @@ public class ControlPanel extends JPanel {
 		valuesWrapperPanel.add(labelValuesPanel, BorderLayout.WEST);
 		valuesWrapperPanel.add(valuesPanel, BorderLayout.EAST);
 		
+//		SLUTTET HER, MÅ LEGGE TIL DE ØVRIGE KOMPONENTENE
+		
 		//Speedslider
 		speed = new JSlider(JSlider.HORIZONTAL, 10, 30, 12);
 		speed.setMajorTickSpacing(10);
