@@ -14,7 +14,7 @@ public class AnimBubbleSort {
 	}
 
 	/**
-	 * The idea behid this one is to use it outside the class in the same manner
+	 * The idea behind this one is to use it outside the class in the same manner
 	 * as using hasNext() in a iterator. since usage of an iterator is kind
 	 * overkill here this one should fit it's purpose.
 	 * 

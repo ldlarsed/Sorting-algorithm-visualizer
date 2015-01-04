@@ -3,6 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -27,10 +29,12 @@ public class ControlPanel extends JPanel {
 	
 	private ButtonListener buttonListener;
 	private Listener listener;
+	private Mouse mouse;
 	
 	public ControlPanel() {
 		this.setLayout(new BorderLayout());
 		listener = new Listener();
+		mouse = new Mouse();
 		//Values and labels
 		lowestValueLabel = new JLabel(Const.LAB_LOW);
 		highestValueLabel = new JLabel(Const.LAB_HIGH);
@@ -61,6 +65,8 @@ public class ControlPanel extends JPanel {
 		speed.setMinorTickSpacing(1);
 		speed.setPaintTicks(true);
 		speed.setPaintLabels(true);
+		speed.addMouseListener(mouse);
+		speed.setEnabled(false);
 		speedPanel = new JPanel(new BorderLayout());
 		speedPanel.add(speed, BorderLayout.CENTER);
 		
@@ -73,7 +79,23 @@ public class ControlPanel extends JPanel {
 		this.add(valuesWrapperPanel, BorderLayout.WEST);
 		this.add(speedPanel, BorderLayout.EAST);
 		
-		
+		setInitialValues();
+	}
+	
+	private void setInitialValues(){
+		min.setText(String.valueOf(Const.MIN_INIT));
+		max.setText(String.valueOf(Const.MAX_INIT));
+		count.setText(String.valueOf(Const.COUNT_INIT));
+	}
+	
+	public int[] getValues(){
+		return new int[]{Integer.parseInt(min.getText()), Integer.parseInt(max.getText()), Integer.parseInt(count.getText())}; 
+	}
+	
+	public void setValues(int[] v){
+		min.setText(String.valueOf(v[0]));
+		max.setText(String.valueOf(v[1]));
+		count.setText(String.valueOf(v[2]));
 	}
 	
 	public void setButtonListener(ButtonListener bl){
@@ -89,9 +111,41 @@ public class ControlPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == newDataButton){
+				//Sends to window
 				buttonListener.buttonPressed(ButtonType.NEW_DATA);
-//				JOptionPane.showMessageDialog(null, "Startet fra ControlPanel");
 			}
 		}
+	}
+	
+	private class Mouse implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			JOptionPane.showMessageDialog(null, Const.NOT_IMPLEMENTED);
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 }

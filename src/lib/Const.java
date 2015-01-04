@@ -10,6 +10,15 @@ public class Const {
 	public final static String LAB_HIGH = "Max";
 	public final static String LAB_COUNT = "Count";
 	public final static int VALUES_LNGT = 3;
-	public final static String BUTTON_NEW = "New data";
 	
+	
+	//Window
+	public final static String BUTTON_NEW = "New data";
+	public final static int MIN_INIT = 1;
+	public final static int MAX_INIT = 50;
+	public final static int COUNT_INIT = 50;
+	public final static String DATA_PANEL = "Data";
+	
+	//Other
+	public final static String NOT_IMPLEMENTED = "Control not jet implemented";
 }

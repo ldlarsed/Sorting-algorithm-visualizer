@@ -17,7 +17,8 @@ public class Controller {
 	private int[] data;
 
 	public Controller() {
-		data = DataCreator.createDataArray(1, 50, 50);
+		data = DataCreator.createDataArray(1, 50, 50); // Creates some data at
+														// start
 		barPanel = new BarPanel(data);
 		window = new Window(barPanel);
 
@@ -29,28 +30,33 @@ public class Controller {
 				case SORT:
 					// Sorting button pressed
 					AnimBubbleSort bub = new AnimBubbleSort(data);
+
 					Thread thread = new Thread(new Runnable() {
 						@Override
 						public void run() {
-
 							while (bub.hasNext()) {
 								bub.sortNextStep();
+								window.revalidate();
+								window.repaint();
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
 								sendNewDataset(bub.getCurrentData());
 							}
 						}
 					});
 					thread.start();
-
-					try {
-						// thread.wait(500);
-						thread.join();
-
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					// try {
+					// // thread.wait(500);
+					// thread.join();
+					// } catch (InterruptedException e) {
+					// e.printStackTrace();
+					// }
 					break;
 				case NEW_DATA:
-					JOptionPane.showMessageDialog(null, "Startet fra controller");
+					updateBars();
 					break;
 				default:
 					throw new InvalidParameterException("Wrong on button type "
@@ -59,6 +65,14 @@ public class Controller {
 			}
 		});
 
+	}
+
+	/**
+	 * Updates bars from the values input
+	 */
+	private void updateBars() {
+		int[] v = window.getValues();
+		createNewDataset(v[0], v[1], v[2]);
 	}
 
 	/**

@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,15 +11,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import lib.ButtonType;
+import lib.Const;
 import controller.ButtonListener;
 
 @SuppressWarnings("serial")
 public class Window extends JFrame implements ActionListener {
 
 	private ControlPanel controlPanel;
-	private BarPanel barPanel;
 	private JButton sortButton;
 
+	private JPanel dataPanel; //for now only for testing
 	private JPanel wrapperPanel;
 	private JPanel buttonPanel;
 
@@ -30,17 +30,17 @@ public class Window extends JFrame implements ActionListener {
 		super("Sorting visualizer");
 
 		controlPanel = new ControlPanel();
-		barPanel = panel;
 		sortButton = new JButton("Sort");
 
+		dataPanel = new JPanel(new BorderLayout());
+		dataPanel.setBorder(BorderFactory.createTitledBorder(Const.DATA_PANEL));
+		dataPanel.add(panel, BorderLayout.CENTER);
 		wrapperPanel = new JPanel(new BorderLayout());
 		buttonPanel = new JPanel();
-
-		buttonPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		buttonPanel.add(sortButton, BorderLayout.CENTER);
 
 		wrapperPanel.add(controlPanel, BorderLayout.NORTH);
-		wrapperPanel.add(barPanel, BorderLayout.CENTER);
+		wrapperPanel.add(dataPanel, BorderLayout.CENTER);
 		wrapperPanel.add(buttonPanel, BorderLayout.SOUTH);
 
 		controlPanel.setButtonListener(new ButtonListener() {
@@ -48,7 +48,7 @@ public class Window extends JFrame implements ActionListener {
 			public void buttonPressed(ButtonType bt) {
 				switch (bt) {
 				case NEW_DATA:
-					JOptionPane.showMessageDialog(null, "Catched in window");
+					//Sends to controller
 					buttonListener.buttonPressed(ButtonType.NEW_DATA);
 					break;
 				default:
@@ -65,11 +65,15 @@ public class Window extends JFrame implements ActionListener {
 		// this.pack();
 		this.setSize(800, 600);
 		this.setVisible(true);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void setDataPanel(BarPanel panel) {
-		wrapperPanel.add(panel, BorderLayout.CENTER);
+		dataPanel.removeAll();
+		dataPanel.add(panel, BorderLayout.CENTER);
+		dataPanel.revalidate();
+		dataPanel.repaint();
 		// Thread th1 = new Thread(new Runnable() {
 		//
 		// @Override
@@ -87,6 +91,14 @@ public class Window extends JFrame implements ActionListener {
 		// wrapperPanel.revalidate();
 		// wrapperPanel.repaint();
 	}
+	
+	public int[] getValues(){
+		return controlPanel.getValues();
+	}
+	
+	public void setValues(int[] v){
+		controlPanel.setValues(v);
+	}
 
 	public void setButtonText(String text) {
 		this.sortButton.setText(text);
@@ -95,7 +107,7 @@ public class Window extends JFrame implements ActionListener {
 	public void setButtonListener(ButtonListener bl) {
 		this.buttonListener = bl;
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == sortButton) {
