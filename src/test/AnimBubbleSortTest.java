@@ -19,6 +19,12 @@ public class AnimBubbleSortTest {
 		while(bub.hasNext()){
 			bub.sortNextStep();
 			System.out.println(bub.toString());
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

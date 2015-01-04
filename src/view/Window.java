@@ -53,6 +53,14 @@ public class Window extends JFrame implements ActionListener{
 	
 	public void setDataPanel(BarPanel panel){
 		wrapperPanel.add(panel, BorderLayout.CENTER);
+//		Thread th1 = new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				wrapperPanel.add(panel, BorderLayout.CENTER);
+//			}
+//		});
+//		th1.start();
 //		this.barPanel.remove(barPanel);
 //		barPanel.revalidate();
 //		barPanel.repaint();
