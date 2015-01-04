@@ -9,6 +9,7 @@ public class Const {
 	public final static String LAB_LOW = "Min";
 	public final static String LAB_HIGH = "Max";
 	public final static String LAB_COUNT = "Count";
-	public final static int VALUES_LNGT = 10;
+	public final static int VALUES_LNGT = 3;
+	public final static String BUTTON_NEW = "New data";
 	
 }

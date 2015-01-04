@@ -1,5 +1,5 @@
 package lib;
 
 public enum ButtonType {
-	SORT
+	SORT, NEW_DATA
 }

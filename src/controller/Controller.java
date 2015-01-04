@@ -2,6 +2,8 @@ package controller;
 
 import java.security.InvalidParameterException;
 
+import javax.swing.JOptionPane;
+
 import lib.ButtonType;
 import model.AnimBubbleSort;
 import model.DataCreator;
@@ -46,6 +48,9 @@ public class Controller {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					break;
+				case NEW_DATA:
+					JOptionPane.showMessageDialog(null, "Startet fra controller");
 					break;
 				default:
 					throw new InvalidParameterException("Wrong on button type "
