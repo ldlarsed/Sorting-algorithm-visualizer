@@ -54,6 +54,7 @@ public class Controller {
 					// } catch (InterruptedException e) {
 					// e.printStackTrace();
 					// }
+					if(!bub.hasNext()) thread.interrupt();
 					break;
 				case NEW_DATA:
 					updateBars();

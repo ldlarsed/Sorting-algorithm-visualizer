@@ -10,6 +10,14 @@ public class Const {
 	public final static String LAB_HIGH = "Max";
 	public final static String LAB_COUNT = "Count";
 	public final static int VALUES_LNGT = 3;
+	public final static String ALG_PANEL = "Algorithm";
+	public final static String TIMER_PANEL = "Timer";
+	public final static String ALG_BUBBLE = "Bubble";
+	public final static String ALG_INSERT = "Insertion";
+	public final static String ALG_QUICK = "Quick";
+	public final static String ALG_SELECT = "Selection";
+	public final static String ALG_MERGE = "Merge";
+	public final static String ALG_HEAP = "Heap";
 	
 	
 	//Window
