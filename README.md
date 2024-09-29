@@ -1,4 +1,4 @@
-Sorting-algorithm-visualizer
+Sorting-algorithm-visualizer (student project)
 ============================
 Visualize several different sorting algorithms.
 ## Screenshots
